@@ -1,0 +1,86 @@
+
+.SideBar {
+    margin-left: -90px;
+    margin-top: 20px;
+    width: 200px;
+    /* background-color: #f8f9fa; */
+    border-right: 1.5px solid #A9A9A9;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+    font-size: max(1vw,10px);
+  }
+  
+  .sidebar-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .option {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #a9a9a9;
+    cursor: pointer;
+    
+  }
+  
+  .option p {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .option:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .option svg {
+    color: red;
+  }
+  
+  @media (max-width: 900px) {
+    .SideBar {
+      width: 140px;
+      padding: 10px;
+    }
+  
+    .option {
+      min-height: 40px;
+      padding: 5px;
+    }
+  
+    .option p {
+      font-size: 12px;
+    }
+  
+    .option svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  @media (max-width: 750px) {
+    .SideBar {
+      width: 60px;
+      margin-left: -60px;
+      padding: 8px;
+    }
+  
+    .option p {
+      /* font-size: 10px; */
+      display: none;
+     
+    }
+  
+    .option svg {
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+    }
+  }

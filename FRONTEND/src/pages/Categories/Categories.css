@@ -1,0 +1,111 @@
+/* .explore-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 100px;
+}
+.explore-menu h1{
+    color: #262626;
+    font-weight: 500;    
+}
+.explore-menu-text{
+    max-width: 60%;
+    columns: #808080;
+} */
+.categories-list{
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap: 20px;
+    text-align: center;
+    margin: 20px 0px;
+    /* overflow-x: scroll; */
+}
+
+.categories-list-category{
+    width: 80%;
+    margin: auto;
+    border-radius:15px;
+    box-shadow: 0px 0px 10px #00000057;
+    min-height: 180px;
+    transition: 0.3s;
+    animation: fadeIn 1s;
+}
+
+
+.categories-list::-webkit-scrollbar{
+    display: none;
+}
+.categories-list-category img{
+    width: 7.5vw;
+    min-width: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+.categories-list-category p{
+    margin-top: 10px;
+    color: #5f1111;
+    font-size: max(1.4vw,16px);
+    cursor: pointer;
+}
+
+.categories-list-category hr{
+    margin: 10px 10px;
+    color: #a4a2a2;
+}
+
+.categories-list-category .action-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 6px;
+    /* margin-top: -35px; */
+    border-radius: 15px;
+}
+.categories-list-category .action-icon .updateCat{
+    color: #00530f;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 4px;
+   
+}
+.categories-list-category .action-icon .updateCat:hover{
+    background-color: #005e164f;
+    border: 1px solid #00530f;
+}
+.categories-list-category .action-icon .deleteCat{
+    color: red;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 4px;
+}
+.categories-list-category .action-icon .deleteCat:hover{
+    background-color: #ffcaca4f;
+    border: 1px solid red;
+}
+.add-cat{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+    /* color: #5f1111; */
+}
+.add-cat b{
+    color: #5f1111;
+}
+.add-cat svg{
+    cursor: pointer;
+    color: #5f1111;
+}
+
+
+/* @media (max-width:1050px) {
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+} */

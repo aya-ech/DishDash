@@ -1,0 +1,83 @@
+.UpdateFoodPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.34);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+.UpdateFoodPopup-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.UpdateFoodPopup-title h2 {
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.UpdateFoodPopup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.UpdateFoodPopup-inputs input[type="text"],
+.UpdateFoodPopup-inputs input[type="number"],
+.UpdateFoodPopup-inputs textarea,
+.UpdateFoodPopup-inputs select
+
+ {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+
+.UpdateFoodPopup-inputs input[type="text"]:focus,
+.UpdateFoodPopup-inputs input[type="number"]:focus,
+.UpdateFoodPopup-inputs textarea:focus,
+.UpdateFoodPopup-inputs select:focus {
+    border-color: red;
+}
+
+.UpdateFoodPopup button[type="submit"] {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 70px ;
+}
+.UpdateFoodPopup .cancelUpdate {
+    padding: 8px 16px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 70px ;
+}
+
+
+
+
+

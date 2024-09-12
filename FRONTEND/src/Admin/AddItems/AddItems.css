@@ -1,0 +1,84 @@
+.AddFoodPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.34);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+}
+
+.AddFoodPopup-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.AddFoodPopup-title h2 {
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.AddFoodPopup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.AddFoodPopup-inputs input[type="text"],
+.AddFoodPopup-inputs input[type="file"],
+.AddFoodPopup-inputs input[type="number"],
+.AddFoodPopup-inputs textarea,
+.AddFoodPopup-inputs select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+
+.AddFoodPopup-inputs input[type="text"]:focus,
+.AddFoodPopup-inputs input[type="file"]:focus,
+.AddFoodPopup-inputs input[type="number"]:focus,
+.AddFoodPopup-inputs textarea:focus,
+.AddFoodPopup-inputs select:focus {
+    border-color: red;
+}
+
+.AddFoodPopup button[type="submit"] {
+    padding: 8px 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 70px ;
+}
+.AddFoodPopup .cancelUpdate{
+    padding: 8px 16px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 70px ;
+}
+
+
+
+
+
+
