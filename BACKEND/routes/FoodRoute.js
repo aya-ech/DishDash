@@ -39,10 +39,34 @@ routerFood.get("/foods/:id", FoodControllers.getFoodById);
 
 routerFood.get("/foods/category/:categoryId",FoodControllers.getFoodsByCategory);
 
-routerFood.put("/foods/:id",authenticateToken,verifyAdmin, FoodControllers.updateFood);
+routerFood.put("/foods/:id", authenticateToken, verifyAdmin, upload.single("image"), async (req, res) => {
+  try {
+    const food = await Food.findById(req.params.id);
+    if (!food) {
+      return res.status(404).json({ error: "Food not found" });
+    }
+
+    
+    food.name = req.body.name || food.name;
+    food.desc = req.body.desc || food.desc;
+    food.price = req.body.price || food.price;
+    food.category = req.body.category || food.category;
+
+
+    if (req.file) {
+      food.image = req.file.filename;  
+    }
+
+    const updatedFood = await food.save();
+    return res.status(200).json(updatedFood);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+});
+
 
 routerFood.delete("/foods/:id",authenticateToken,verifyAdmin, FoodControllers.deleteFood);
-//,authenticateToken,verifyAdmin
+
 
 
 module.exports = routerFood;

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
 
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
@@ -11,6 +11,7 @@ import Cart from './pages/Cart/Cart'
 import MyOrders from './pages/MyOrders/MyOrders';
 import { StoreContext } from './context/StoreContext';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Authorization from './Admin/Authorization/Authorization';
 
 const App = () => {
   const [showLogin,setShowLogin] = useState(false)
@@ -29,14 +30,17 @@ const App = () => {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/order' element={<PlaceOrder/>} />
         <Route path='/myOrders' element={<MyOrders/>} />
-        {role === 'admin' && (
+        {role === 'admin' ? (
                 <Route path='/admin/dashboard/*' element={<Dashboard />} />
+        ) : (
+        <Route path='/admin/*' element={<Navigate to ='/NotAuthorized'/>} />
         )}
         </>
       )}
+      <Route path='/NotAuthorized' element={<Authorization/>}/>
       </Routes>
     </div>
-    {location.pathname === '/' && <Footer />}
+    <Footer/>
     </>
   )
 }

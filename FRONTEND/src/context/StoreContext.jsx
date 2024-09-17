@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-// import { food_list } from "../assets/assets";
+
 import axios from "axios";
 
 export const StoreContext = createContext(null);
@@ -9,10 +9,7 @@ const StoreContextProvider = (props) => {
 
   const [cartItems, setCartItems] = useState({});
 
-  // const [cartItems, setCartItems] = useState(() => {
-  //     const savedCart = sessionStorage.getItem('cartItems');
-  //     return savedCart ? JSON.parse(savedCart) : {};
-  //   });
+
 
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,9 +26,7 @@ const StoreContextProvider = (props) => {
     }
   };
 
-  //   useEffect(() => {
-  //     sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
-  //   }, [cartItems]);
+
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {

@@ -37,15 +37,7 @@ const authenticateToken = (req, res, next) => {
 };
 
 
-// const verifyUser = (req, res, next) => {
-//     authenticateToken(req, res, async () => {
-//         if (req.user._id.equals(req.params.id) || req.user.Id_role.role_name === 'admin') {
-//             next();
-//         } else {
-//             return res.status(403).json({ message: "You are not authorized!" });
-//         }
-//     });
-// };
+
 
 const verifyAdmin = (req, res, next) => {
     authenticateToken(req, res, async () => {

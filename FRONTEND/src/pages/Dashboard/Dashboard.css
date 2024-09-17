@@ -1,11 +1,23 @@
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+
 .dashboard-container {
-    display: flex; 
-    height: 100vh;  
-    
-  }
+  display: flex;
+  flex-grow: 1; 
+}
+
+
 .dashboard-content {
-    flex-grow: 1;
-    padding: 20px; 
-    margin-left: 40px;
- 
-  }
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 40px;
+}
+
+.footer {
+  width: 100%; 
+}

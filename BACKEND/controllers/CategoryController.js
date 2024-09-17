@@ -2,20 +2,6 @@ const Category = require("../models/Category");
 const Food = require("../models/Food");
 
 
-// exports.createCategory = async (req, res) => {
-//     let image_filename = `${req.file.filename}`;
-//     const newCategory = new Category ({
-//         category_name : req.body.category_name,
-//         category_img:image_filename
-//     });
-  
-//     try {
-//         const savedCategory = await newCategory.save();
-//         return res.status(201).json(savedCategory);
-//     } catch (err) {
-//         return res.status(400).json({ success:false ,error: err.message });
-//     }
-//   };
   
   exports.getCategories = async (req, res) => {
     try {
@@ -62,20 +48,3 @@ const Food = require("../models/Food");
         return res.status(400).json({ error: err.message });
     }
   };
-  exports.updateCategory = async (req, res) => {
-    try {
-        const updatedCategory = await Category.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        })
-        
-        
-        if (!updatedCategory) {
-            return res.status(404).json({ error: "Category not found" });
-        }
-        return res.status(200).json(updatedCategory);
-    } catch (err) {
-        return res.status(400).json({ error: err.message });
-    }
-};
-  

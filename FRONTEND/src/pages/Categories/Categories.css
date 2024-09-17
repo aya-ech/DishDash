@@ -41,6 +41,7 @@
 .categories-list-category img{
     width: 7.5vw;
     min-width: 50px;
+    max-height: 80px;
     margin-top: 20px;
     cursor: pointer;
     border-radius: 50%;

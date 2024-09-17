@@ -99,11 +99,4 @@ exports.login = async (req, res, next) => {
 
 
 
-// exports.logout = (req, res) => {
-//     res.cookie('access_token', '', {
-//         httpOnly: true,
-//         secure: process.env.NODE_ENV === 'production',
-//         maxAge: 0
-//     });
-//     res.status(200).json({ message: 'Logged out successfully' });
-// };
+

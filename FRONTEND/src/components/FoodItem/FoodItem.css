@@ -3,13 +3,14 @@
     margin: auto;
     border-radius:15px;
     box-shadow: 0px 0px 10px #00000015;
-    min-height: 450px;
+    min-height: 400px;
     transition: 0.3s;
     animation: fadeIn 1s;
 }
 .food-item-image{
     width: 100%;
     border-radius: 15px 15px 0px 0px;
+    height: 140px;
 }
 .food-item-info{
     padding: 20px;
@@ -18,11 +19,12 @@
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 500;
+    min-height: 50px;
 }
 .food-item-desc{
     color: #676767;
     font-size: 12px;
-    min-height: 90px;
+    min-height: 100px;
 }
 .food-item-price{
     color: red;

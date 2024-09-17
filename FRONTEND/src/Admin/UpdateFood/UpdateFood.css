@@ -37,6 +37,7 @@
 
 .UpdateFoodPopup-inputs input[type="text"],
 .UpdateFoodPopup-inputs input[type="number"],
+.UpdateFoodPopup-inputs input[type="file"],
 .UpdateFoodPopup-inputs textarea,
 .UpdateFoodPopup-inputs select
 
@@ -51,6 +52,7 @@
 
 .UpdateFoodPopup-inputs input[type="text"]:focus,
 .UpdateFoodPopup-inputs input[type="number"]:focus,
+.UpdateFoodPopup-inputs input[type="file"]:focus,
 .UpdateFoodPopup-inputs textarea:focus,
 .UpdateFoodPopup-inputs select:focus {
     border-color: red;

@@ -31,10 +31,11 @@
 
 
 
-/* .order p b{
-    font-weight: 500;
-    color: #454545;
-} */
+.msg{
+    text-align: center;
+    margin-top: 60px;
+    color: red;
+}
 
 @media (max-width:900px) {
     .order{

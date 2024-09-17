@@ -12,39 +12,50 @@ const UpdateFood = ({setShowPopupUpdateFood,idFood,foodName,foodDesc,foodPrice,f
         name: foodName ||"",
         desc: foodDesc || "",
         price: foodPrice ||"",
-        category: foodCat._id ||""
-    });
-    console.log(data.category)
-
-    const onChangeHandler = (event) => {
+        category: foodCat._id ||"",
+        image: null,  // Add image field
+      });
+    
+      const onChangeHandler = (event) => {
         const name = event.target.name;
-        const value = event.target.value;
-        setData(data => ({ ...data, [name]: value }));
+        if (event.target.type === 'file') {
+          setData(data => ({ ...data, image: event.target.files[0] })); // Handle image file
+        } else {
+          const value = event.target.value;
+          setData(data => ({ ...data, [name]: value }));
+        }
+      };
+    
+      const onSubmit = async (event) => {
+        event.preventDefault();
+    
+        const formData = new FormData();
+        formData.append('name', data.name); 
+        formData.append('desc', data.desc); 
+        formData.append('price', data.price); 
+        formData.append('category', data.category); 
+    
+        // Append image file if selected
+        if (data.image) {
+          formData.append('image', data.image);
         }
     
-
-    const onSubmit = async(event) =>{
-        event.preventDefault();
-    const UpdatedFood = {   
-        name:data.name,
-        desc:data.desc,
-        price:data.price,
-        category:data.category
-    }
         try {
-            await axios.put(`http://localhost:3000/api/foods/${idFood}`, UpdatedFood,   {
-                headers: {
-                Authorization: `Bearer ${token}`,
-              },
-          })
-         setShowPopupUpdateFood(false);
-         window.location.reload()
-         toast.success("Food updated successfully")
+          await axios.put(`http://localhost:3000/api/foods/${idFood}`, formData, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+          setShowPopupUpdateFood(false);
+          window.location.reload();
+          toast.success("Food updated successfully");
         } catch (error) {
-            setErrors('error updating food')
+          setErrors('Error updating food');
         }
-
-    }
+      };
+    
+      
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -83,6 +94,8 @@ const UpdateFood = ({setShowPopupUpdateFood,idFood,foodName,foodDesc,foodPrice,f
                     <option key={item._id} value={item._id}>{item.category_name}</option>
                 ))}
                 </select>
+                <input type="file" name="image" onChange={onChangeHandler} 
+          />
                 
             </div>
             

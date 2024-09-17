@@ -1,15 +1,5 @@
 const Food = require('../models/Food')
 
-exports.createFood = async (req, res) => {
-  const newFood = new Food (req.body);
-
-  try {
-      const savedFood = await newFood.save();
-      return res.status(201).json(savedFood);
-  } catch (err) {
-      return res.status(400).json({ error: err.message });
-  }
-};
 
 exports.getFoods = async (req, res) => {
   try {
@@ -30,15 +20,7 @@ exports.getFoodById = async (req, res) => {
   }
 };
 
-exports.updateFood = async (req, res) => {
-  try {
-      const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-      if (!updatedFood) return res.status(404).json({ error: "Food not found" });
-      return res.status(200).json(updatedFood);
-  } catch (err) {
-      return res.status(400).json({ error: "Failed to update food item" });
-  }
-};
+
 
 exports.deleteFood = async (req, res) => {
   try {

@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
 import './Cart.css'
-import { FaDeleteLeft } from "react-icons/fa6";
 import { StoreContext } from '../../context/StoreContext'
 import { IoMdAddCircle } from "react-icons/io";
-import { FaCircleMinus } from "react-icons/fa6";
 import { IoRemoveCircle } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { MdRemoveShoppingCart } from "react-icons/md";
@@ -12,7 +10,7 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 const Cart = () => {
 
   const {cartItems,foods,removeFromCart,addToCart,getTotalCart,deleteFromCart} = useContext(StoreContext) 
-  // getTotalCart
+
 
 const navigate = useNavigate();
 

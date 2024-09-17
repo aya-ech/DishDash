@@ -32,10 +32,48 @@ const storage = multer.diskStorage({
    
 routerCategory.get("/categories", getCategories);
 routerCategory.get("/categories/:id", getCategoryById);
-// routerCategory.delete("/categories/:id",  deleteCategory);
+
 
 routerCategory.delete("/categories/:id",authenticateToken,verifyAdmin,deleteCategoryAndFoods);
-routerCategory.put("/categories/:id",authenticateToken,verifyAdmin,updateCategory);
-//authenticateToken,verifyAdmin,
+routerCategory.put("/categories/:id", authenticateToken, verifyAdmin, upload.single("image"), async (req, res) => {
+  try {
+   
+    const category = await Category.findById(req.params.id);
+
+    if (!category) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+
+    
+    const currentImg = category.category_img;
+
+    
+    const { category_name } = req.body;
+    let updatedData = { category_name };
+
+   
+    if (req.file) {
+      updatedData.category_img = req.file.filename;
+
+     
+    } else {
+
+      updatedData.category_img = currentImg;
+    }
+
+   
+    const updatedCategory = await Category.findByIdAndUpdate(
+      req.params.id,
+      updatedData,
+      { new: true, runValidators: true }
+    );
+
+    return res.status(200).json(updatedCategory);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+});
+
+
 
 module.exports = routerCategory;

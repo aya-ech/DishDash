@@ -27,6 +27,7 @@
 .explore-menu-list-item img{
     width: 7.5vw;
     min-width: 80px;
+    max-height: 90px;
     cursor: pointer;
     border-radius: 50%;
     transition: 0.2s;
@@ -36,6 +37,8 @@
     color: #5f1111;
     font-size: max(1.4vw,16px);
     cursor: pointer;
+    min-width: 150px;
+
 }
 .explore-menu hr{
     margin: 10px 0px;

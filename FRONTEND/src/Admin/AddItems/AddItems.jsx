@@ -53,6 +53,7 @@ const AddItems = ({setShowPopupAddFood,addFood}) => {
             },
         })
         toast.success("Food added successfully")
+        setShowPopupAddFood(false)
         addFood(response.data)
 
       } catch (error) {

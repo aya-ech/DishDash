@@ -18,6 +18,9 @@
 .food-image{
     width: 100%;
     border-radius: 15px 15px 0px 0px;
+    min-height: 140px;
+    max-height: 140px;
+    /* max-height: 120px; */
 }
 .food-info{
     padding: 20px;
@@ -26,6 +29,7 @@
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: 500;
+    min-height: 50px;
 }
 .food-desc{
     color: #676767;
