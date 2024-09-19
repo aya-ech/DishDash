@@ -25,9 +25,18 @@
     min-height: 150px;
 }
 
-.order p span{
+/* .order p span{
     color: red;
-}
+} */
+ .red{
+    color: red;
+ }
+ .yellow{
+    color: orange;
+ }
+ .green {
+    color: green;
+ }
 
 
 

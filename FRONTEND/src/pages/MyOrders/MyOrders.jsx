@@ -1,3 +1,4 @@
+import React from "react";
 import "./MyOrders.css";
 import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
@@ -6,7 +7,7 @@ import axios from "axios";
 const MyOrders = () => {
   const { token, userId } = useContext(StoreContext);
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -19,25 +20,32 @@ const MyOrders = () => {
             },
           }
         );
-        setOrders(response.data);
+
+        const sortedOrders = response.data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+
+        setOrders(sortedOrders);
       } catch (err) {
         console.log(err.message);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     if (token) {
       fetchOrders();
     } else {
-      setLoading(false); 
+      setLoading(false);
     }
-  }, [token, userId]); 
+  }, [token, userId]);
 
   const textFormater = ({ name, quantity }) => {
     return (
       <div>
-        <p>{name} x {quantity}</p> 
+        <p>
+          {name} x {quantity}
+        </p>
       </div>
     );
   };
@@ -47,28 +55,51 @@ const MyOrders = () => {
       <h2>My Orders</h2>
       <div className="container">
         {loading ? (
-          <p>Loading...</p> 
+          <p>Loading...</p>
         ) : orders.length === 0 ? (
-          <h3 className="msg">You have no orders yet.</h3> 
+          <h3 className="msg">You have no orders yet.</h3>
         ) : (
           orders.map((order, index) => {
-            const totalItems = order.foods.reduce((total, item) => total + item.quantity, 0);
+            const totalItems = order.foods.reduce(
+              (total, item) => total + item.quantity,
+              0
+            );
             return (
               <div key={index} className="order">
                 <p>
-                 
                   {order.foods.map((item, index) => {
                     return (
                       <React.Fragment key={index}>
-                        {textFormater({ name: item.name, quantity: item.quantity })}
+                        {textFormater({
+                          name: item.name,
+                          quantity: item.quantity,
+                        })}
                       </React.Fragment>
                     );
                   })}
                 </p>
                 <p>{order.total}.00DH</p>
                 <p>Foods: {totalItems}</p>
-                <p>
+                {/* <p>
                   <span>&#x25cf;</span> <b>{order.status}</b>
+                </p> */}
+                <p>
+                  <span
+                    className={
+                      order.status === "In process"
+                        ? "red"
+                        : order.status === "in process"
+                        ? "red"
+                        : order.status === "Out for delivery"
+                        ? "yellow"
+                        : order.status === "Delivered"
+                        ? "green"
+                        : ""
+                    }
+                  >
+                    &#x25cf;
+                  </span>{" "}
+                  <b>{order.status}</b>
                 </p>
               </div>
             );

@@ -14,8 +14,7 @@ const FoodItem = ({id,name,price,description,image,setShowLogin}) => {
       };
 
     const handleAddToCart = () => {
-        const isAuthenticated = !!localStorage.getItem('token'); 
-        if (isAuthenticated) {
+        if (token) {
           addToCart(id);
         } else {
           setShowLogin(true);

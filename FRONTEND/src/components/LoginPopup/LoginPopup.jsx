@@ -1,22 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './LoginPopup.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPopup = ({ setShowLogin }) => {
-  const { url, setToken , setUserId , setRole} = useContext(StoreContext);
-  const navigate = useNavigate()
+  const { url, setToken, setUserId, setRole } = useContext(StoreContext);
+  const navigate = useNavigate();
 
   const [currState, setCurrstate] = useState("Login");
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: "" 
+    confirmPassword: ""
   });
   const [errors, setErrors] = useState({});
+
+  
+  useEffect(() => {
+    setData({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+    });
+    setErrors({});
+  }, [currState]);
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -39,7 +50,7 @@ const LoginPopup = ({ setShowLogin }) => {
       return;
     }
 
-    try { 
+    try {
       const response = await axios.post(newUrl, data);
       const token = response.data.token;
       const userId = response.data.id;
@@ -52,13 +63,13 @@ const LoginPopup = ({ setShowLogin }) => {
       setRole(role);
       setShowLogin(false);
 
-      if (role === "admin"){
-        navigate('/admin/dashboard')
-      }else{
-        navigate('/')
+      if (role === "admin") {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/');
       }
     } catch (error) {
-      const field = error.response.data.field ;
+      const field = error.response.data.field;
       setErrors({ [field]: error.response.data.message });
     }
   };

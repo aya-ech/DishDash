@@ -19,8 +19,10 @@ const AllOrders = () => {
           Authorization: `Bearer ${token}`,
         },
     });
-    setAllOrders(response.data)
-    console.log(AllOrders)
+    const sortedOrders = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    setAllOrders(sortedOrders);
+
     } catch (err) {
       setError(err.message);
       } finally {
@@ -31,11 +33,14 @@ const AllOrders = () => {
     useEffect(() =>{
        fetchAllOrders()
     },[])
-    console.log(AllOrders)
 
-    const textFormater = ({ text }) => {
-      const newlineText = text.replace(/\n/g, "");
-      return <div>{newlineText}</div>;
+
+    const textFormater = ({ name, quantity }) => {
+      return (
+        <div>
+          <p>{name} x {quantity}</p> 
+        </div>
+      );
     };
 
     if (loading) return <p>Loading...</p>;
@@ -73,8 +78,10 @@ const AllOrders = () => {
               <div className="order-foods">
               <p>
                 {order.foods.map((item, index) => {
-                  return textFormater(
-                    { text: item.name  + " x " +  item.quantity  }
+                   return (
+                    <>
+                      {textFormater({ name: item.name, quantity: item.quantity })}
+                    </>
                   );
                 })}
               </p>

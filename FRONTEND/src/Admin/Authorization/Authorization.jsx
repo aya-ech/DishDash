@@ -5,8 +5,8 @@ import './Authorization.css';
 const Authorization = () => {
   return (
     <div className="not-authorized">
-      <h2>403 - Not Authorized</h2>
-      <p>You do not have permission to access this page.</p>
+      <h2>404 - Not Found</h2>
+      <p>This page doesn't exist</p>
     </div>
   );
 };

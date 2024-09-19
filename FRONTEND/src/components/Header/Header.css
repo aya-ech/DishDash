@@ -66,6 +66,7 @@
     }
     
     .header-contents button{
-        padding: 2vw 4vw;
+        padding: 1.5vw 3vw;
+        font-size: 10px;
     }
 }

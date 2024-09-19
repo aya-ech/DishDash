@@ -90,7 +90,7 @@ const StoreContextProvider = (props) => {
       },
     });
     setCartItems(response.data.cart || {});
-    //   console.log(cartItems)
+
   };
 
   const getTotalCart = () => {

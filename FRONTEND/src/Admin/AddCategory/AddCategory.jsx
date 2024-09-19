@@ -39,7 +39,7 @@ const AddCategory = ({setShowPopupAdd,addCategory}) => {
             return false;
         }
         try {
-            const response = await axios.post("http://localhost:3000/api/categories",formData,   {
+            const response = await axios.post("http://localhost:3000/api/categories",formData ,   {
                 headers: {
                 Authorization: `Bearer ${token}`,
               },

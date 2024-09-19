@@ -131,10 +131,9 @@ const PlaceOrder = () => {
       );
       setUser({ ...user, phones: updatedPhones, addresses: updatedAddresses });
       setIsSubmitted(true)
-      // setSuccessMsg('success')
       toast.success('Success');
       setSelectedAddress(newAddress);
-      setSelectedPhone(newPhone)
+      setSelectedPhone(newPhone);
     } catch (err) {
       setError(err.message);
     }
@@ -171,7 +170,7 @@ const PlaceOrder = () => {
           </datalist>
           {addressError && <div className="error-message">{addressError}</div>}
           <button className='save-icon' type="submit" disabled = {isCartEmpty} onClick={handleSubmit}><GiConfirmed /></button>
-          {/* {successMsg && <div className="successMsg">{successMsg}</div>} */}
+          
       </div>
       <div className='place-order-right'>
       <div className="cart-total">
